@@ -4,7 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.Index;
 import org.neo4j.ogm.annotation.NodeEntity;
+
+import javax.validation.constraints.NotEmpty;
 
 @Setter
 @Getter
@@ -15,7 +18,9 @@ public class Variant {
     @GeneratedValue
     private Long id;
 
-    private String variant;
+    @Index(unique=true)
+    @NotEmpty
+    private String name;
     
     private String description;
 
@@ -23,7 +28,7 @@ public class Variant {
     }
 
     public Variant(String variant, String description) {
-        this.variant = variant;
+        this.name = variant;
         this.description = description;
     }
 
@@ -31,7 +36,7 @@ public class Variant {
     public String toString() {
         return "Variant{" +
                 "id=" + id +
-                ", variant='" + variant + '\'' +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

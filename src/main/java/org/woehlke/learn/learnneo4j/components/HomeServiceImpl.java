@@ -3,9 +3,12 @@ package org.woehlke.learn.learnneo4j.components;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.File;
-import java.util.concurrent.Executors;
+import org.woehlke.learn.learnneo4j.model.maintainer.MaintainerRepository;
+import org.woehlke.learn.learnneo4j.model.platform.PlatformRepository;
+import org.woehlke.learn.learnneo4j.model.port.PortRepository;
+import org.woehlke.learn.learnneo4j.model.variant.VariantRepository;
+import org.woehlke.learn.learnneo4j.model.category.CategoryRepository;
+import org.woehlke.learn.learnneo4j.model.license.LicenseRepository;
 
 @Service
 public class HomeServiceImpl implements HomeService {
@@ -32,21 +35,4 @@ public class HomeServiceImpl implements HomeService {
         this.variantRepository = variantRepository;
     }
 
-
-    public void getPortinfos() throws Exception {
-        boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
-        ProcessBuilder builder = new ProcessBuilder();
-        if (isWindows) {
-            builder.command("cmd.exe", "/c", "dir");
-        } else {
-            builder.command("sh", "-c", "ls");
-        }
-        builder.directory(new File(System.getProperty("user.home")));
-        Process process = builder.start();
-        StreamGobbler streamGobbler =
-                new StreamGobbler(process.getInputStream(), System.out);
-        Executors.newSingleThreadExecutor().submit(streamGobbler);
-        int exitCode = process.waitFor();
-        assert exitCode == 0;
-    }
 }

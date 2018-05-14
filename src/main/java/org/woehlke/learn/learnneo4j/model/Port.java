@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,9 @@ public class Port {
     @GeneratedValue
     private Long id;
 
-    private String softwareTitle;
+    @Index
+    @NotEmpty
+    private String name;
     private String version;
 
     @Relationship(type="IS_IN")
@@ -44,7 +47,7 @@ public class Port {
     }
 
     public Port(String softwareTitle, String version, Category category, Set<Variant> variants, String description, String homepage, Set<Port> libraryDependencies, Set<Platform> platforms, License license, Set<Maintainer> maintainers, Boolean installed, Boolean active) {
-        this.softwareTitle = softwareTitle;
+        this.name = softwareTitle;
         this.version = version;
         this.category = category;
         this.variants = variants;
@@ -62,7 +65,7 @@ public class Port {
     public String toString() {
         return "Port{" +
                 "id=" + id +
-                ", softwareTitle='" + softwareTitle + '\'' +
+                ", name='" + name + '\'' +
                 ", version='" + version + '\'' +
                 ", category=" + category +
                 ", variants=" + variants +

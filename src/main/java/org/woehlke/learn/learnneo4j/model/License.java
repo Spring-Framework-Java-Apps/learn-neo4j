@@ -2,10 +2,9 @@ package org.woehlke.learn.learnneo4j.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.GraphId;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.*;
+
+import javax.validation.constraints.NotEmpty;
 
 @Setter
 @Getter
@@ -16,21 +15,23 @@ public class License {
     @Id
     @GeneratedValue
     private Long id;
-    
-    private String license;
 
-    
+    @Index(unique=true)
+    @NotEmpty
+    private String name;
+
     public License() {
     }
 
     public License(String license) {
-        this.license = license;
+        this.name = license;
     }
 
     @Override
     public String toString() {
         return "License{" +
-                "license='" + license + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

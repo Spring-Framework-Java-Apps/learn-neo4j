@@ -4,7 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.Index;
 import org.neo4j.ogm.annotation.NodeEntity;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Setter
 @Getter
@@ -15,14 +20,18 @@ public class Maintainer {
     @GeneratedValue
     private Long id;
 
-    private String email;
+    @Index(unique=true)
+    @Email
+    @NotEmpty
+    private String name;
+
     private String gitHub;
 
     public Maintainer() {
     }
 
     public Maintainer(String email, String gitHub) {
-        this.email = email;
+        this.name = email;
         this.gitHub = gitHub;
     }
 
@@ -30,7 +39,7 @@ public class Maintainer {
     public String toString() {
         return "Maintainer{" +
                 "id=" + id +
-                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
                 ", gitHub='" + gitHub + '\'' +
                 '}';
     }
