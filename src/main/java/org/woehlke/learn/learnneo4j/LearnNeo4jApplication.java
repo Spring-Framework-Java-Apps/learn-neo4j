@@ -12,7 +12,7 @@ import org.woehlke.learn.learnneo4j.model.category.CategoryRepository;
 
 @EnableNeo4jRepositories({"org.woehlke.learn.learnneo4j.model","org.woehlke.learn.learnneo4j.components"})
 @EnableTransactionManagement
-@ComponentScan({"org.woehlke.learn.learnneo4j.model","org.woehlke.learn.learnneo4j.model"})
+@ComponentScan({"org.woehlke.learn.learnneo4j.model","org.woehlke.learn.learnneo4j.components"})
 @SpringBootApplication
 public class LearnNeo4jApplication implements CommandLineRunner {
 
