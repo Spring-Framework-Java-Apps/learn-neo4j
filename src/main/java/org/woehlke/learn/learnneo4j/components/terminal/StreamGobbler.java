@@ -1,9 +1,14 @@
-package org.woehlke.learn.learnneo4j.model.port;
+package org.woehlke.learn.learnneo4j.components.terminal;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.concurrent.Callable;
 
 public class StreamGobbler implements Callable<StreamGobbler> {
+
+    private static Logger log = LoggerFactory.getLogger(StreamGobbler.class.getName());
 
     protected final InputStream inStream;
     protected final OutputStream outStream;
@@ -23,6 +28,7 @@ public class StreamGobbler implements Callable<StreamGobbler> {
             String line;
             while ((line = in.readLine()) != null) {
                 if (out != null) {
+                   log.debug(line);
                    out.write(line);
                    out.newLine();
                 }

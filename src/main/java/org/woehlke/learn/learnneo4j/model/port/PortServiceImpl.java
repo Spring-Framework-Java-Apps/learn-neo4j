@@ -43,17 +43,5 @@ public class PortServiceImpl extends Neo4jServiceImpl<Port,Long> implements Port
         return (PortRepository) super.getRepository();
     }
 
-    public void getPortinfos() throws Exception {
-        ProcessBuilder builder = new ProcessBuilder();
-        builder.command("bash", "-c", "sudo port echo all");
-        builder.directory(new File(System.getProperty("user.home")));
-        File outFile = new File("all_ports.txt");
-        FileOutputStream fileOutputStream = new FileOutputStream(outFile);
-        Process process = builder.start();
-        StreamGobbler streamGobbler =
-                new StreamGobbler(process.getInputStream(), fileOutputStream);
-        Executors.newSingleThreadExecutor().submit(streamGobbler);
-        int exitCode = process.waitFor();
-        assert exitCode == 0;
-    }
+
 }
