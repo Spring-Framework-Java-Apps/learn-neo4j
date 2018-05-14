@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.learn.learnneo4j.model.Port;
-import org.woehlke.learn.learnneo4j.model.common.Neo4jServiceImpl;
+import org.woehlke.learn.learnneo4j.common.Neo4jServiceImpl;
 import org.woehlke.learn.learnneo4j.model.variant.VariantRepository;
 import org.woehlke.learn.learnneo4j.model.category.CategoryRepository;
 import org.woehlke.learn.learnneo4j.model.license.LicenseRepository;
