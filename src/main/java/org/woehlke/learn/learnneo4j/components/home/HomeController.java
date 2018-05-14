@@ -1,4 +1,4 @@
-package org.woehlke.learn.learnneo4j.components;
+package org.woehlke.learn.learnneo4j.components.home;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +16,20 @@ public class HomeController {
         this.homeService = homeService;
     }
 
+    @GetMapping("/")
+    public String root() {
+        return "redirect:/home";
+    }
+
     @GetMapping("/greeting")
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
         return "greeting";
+    }
+
+    @GetMapping("/home")
+    public String home() {
+        return "home";
     }
 
 }

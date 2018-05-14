@@ -1,4 +1,4 @@
-package org.woehlke.learn.learnneo4j.components;
+package org.woehlke.learn.learnneo4j.components.home;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
