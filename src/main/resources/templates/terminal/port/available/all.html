@@ -1,10 +1,18 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:insert="template :: tw_head">
+    <title th:replace="${title}">get all available ports</title>
 </head>
-<body>
-<h1>get all available ports</h1>
+<body th:insert="template :: tw_body">
+
+<div class="container" th:replace="tw_main_app">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-12">
+            <h2>get all available ports:</h2>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

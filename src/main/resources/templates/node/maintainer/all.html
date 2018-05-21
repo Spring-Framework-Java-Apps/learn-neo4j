@@ -1,14 +1,22 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:insert="template :: tw_head">
+    <title th:replace="${title}">Nodes</title>
 </head>
-<body>
+<body th:insert="template :: tw_body">
 
-<ul th:each="item : ${all}">
-    <li th:text="${item.name}" />
-</ul>
+<div class="container" th:replace="tw_main_app">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-12">
+            <h2>All Maintainer:</h2>
+            <hr/>
+            <ul th:each="item : ${all}">
+                <li th:text="${item.name}" />
+            </ul>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
