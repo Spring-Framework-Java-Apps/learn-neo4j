@@ -1,5 +1,7 @@
 package org.woehlke.learn.learnneo4j.model.category;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/node/category/")
 public class CategoryController {
+
+    private static Logger log = LoggerFactory.getLogger(CategoryController.class.getName());
 
     private final CategoryService categoryService;
 
@@ -26,6 +30,7 @@ public class CategoryController {
     @GetMapping("all")
     public String all(Model model) {
         model.addAttribute("all", categoryService.findAll());
-        return "node/category/all";
+        log.info("/node/category/all");
+        return "/node/category/all";
     }
 }
