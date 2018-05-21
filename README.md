@@ -38,6 +38,7 @@
 * [thymeleaf]
 * [bootstrap]
 * [font awesome icons]
+* [popper.js.org]
 
 
 [running on localhost  neo4j]:http://localhost:7474/ (neo4j-localhost)
@@ -62,4 +63,4 @@
 [thymeleaf]:https://www.thymeleaf.org/ (thymeleaf)
 [bootstrap]:http://getbootstrap.com/ (bootstrap)
 [font awesome icons]:https://fontawesome.com/icons?d=gallery&m=free (font awesome icons)
-
+[popper.js.org]:https://popper.js.org/ (popper.js.org)
