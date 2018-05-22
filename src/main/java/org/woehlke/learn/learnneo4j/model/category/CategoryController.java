@@ -12,6 +12,7 @@ import org.woehlke.learn.learnneo4j.model.Category;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Controller
 @RequestMapping("/node/category")
 public class CategoryController {
