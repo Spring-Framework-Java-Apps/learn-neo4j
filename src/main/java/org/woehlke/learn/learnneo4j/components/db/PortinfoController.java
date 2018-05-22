@@ -6,24 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.woehlke.learn.learnneo4j.model.platform.PlatformController;
 
 @Controller
-@RequestMapping("/db/Portinfo")
+@RequestMapping("/db/portinfo")
 public class PortinfoController {
 
-    private static Logger log = LoggerFactory.getLogger(PlatformController.class.getName());
+    private static Logger log = LoggerFactory.getLogger(PortinfoController.class.getName());
 
-    @ModelAttribute("title")
-    public String getTitle(){
-        return "Portinfo";
-    }
+    //@ModelAttribute("title")
+    //public String getTitle(){
+    //    return "Portinfo";
+    //}
 
     @GetMapping("/all")
     public String greeting(Model model) {
         model.addAttribute("all", portinfoService.findAll());
+        model.addAttribute("title","Portinfo");
         log.info("db/portinfo/all");
         return "db/portinfo/all";
     }
