@@ -44,4 +44,26 @@ public class Portinfo {
 
     @Lob
     private String portfile;
+
+    @Override
+    public String toString() {
+        return "Portinfo{" +
+                "id=" + id +
+                ", port='" + port + '\'' +
+                ", version='" + version + '\'' +
+                ", category='" + category + '\'' +
+                ", variants='" + variants + '\'' +
+                ", description='" + description + '\'' +
+                ", homepage='" + homepage + '\'' +
+                ", license='" + license + '\'' +
+                ", maintainers='" + maintainers + '\'' +
+                ", platforms='" + platforms + '\'' +
+                ", info='" + info + '\'' +
+                ", deps='" + deps + '\'' +
+                ", rdeps='" + rdeps + '\'' +
+                ", dependents='" + dependents + '\'' +
+                ", variantsInDetail='" + variantsInDetail + '\'' +
+                ", portfile='" + portfile + '\'' +
+                '}';
+    }
 }

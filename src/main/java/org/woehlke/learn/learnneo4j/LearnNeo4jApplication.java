@@ -5,11 +5,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.woehlke.learn.learnneo4j.model.Category;
 import org.woehlke.learn.learnneo4j.model.category.CategoryRepository;
 
+@EnableJpaRepositories({"org.woehlke.learn.learnneo4j.components.db"})
 @EnableNeo4jRepositories({"org.woehlke.learn.learnneo4j.model","org.woehlke.learn.learnneo4j.components"})
 @EnableTransactionManagement
 @ComponentScan({"org.woehlke.learn.learnneo4j.model","org.woehlke.learn.learnneo4j.components"})

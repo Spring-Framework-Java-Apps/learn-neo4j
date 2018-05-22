@@ -8,9 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.woehlke.learn.learnneo4j.model.Category;
 
+import java.util.ArrayList;
+import java.util.List;
 @Controller
-@RequestMapping("/node/category/")
+@RequestMapping("/node/category")
 public class CategoryController {
 
     private static Logger log = LoggerFactory.getLogger(CategoryController.class.getName());
@@ -27,9 +30,14 @@ public class CategoryController {
         return "all Categories";
     }
     
-    @GetMapping("all")
+    @GetMapping("/all")
     public String all(Model model) {
-        model.addAttribute("all", categoryService.findAll());
+        List<Category> all = new ArrayList<Category>();
+        for (Category category : categoryService.findAll()) {
+            all.add(category);
+            log.info(category.toString());
+        }
+        model.addAttribute("all", all);
         log.info("/node/category/all");
         return "/node/category/all";
     }

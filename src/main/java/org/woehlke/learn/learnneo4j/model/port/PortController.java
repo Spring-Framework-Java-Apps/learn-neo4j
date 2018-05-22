@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/node/port/")
+@RequestMapping("/node/port")
 public class PortController {
     
     private static Logger log = LoggerFactory.getLogger(PortController.class.getName());
@@ -28,7 +28,7 @@ public class PortController {
         return "all Categories";
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public String all(Model model) {
         model.addAttribute("all", portService.findAll());
         log.info("node/port/all");

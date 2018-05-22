@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/node/platform/")
+@RequestMapping("/node/platform")
 public class PlatformController {
 
     private static Logger log = LoggerFactory.getLogger(PlatformController.class.getName());
@@ -21,7 +21,7 @@ public class PlatformController {
         return "all Categories";
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public String greeting(Model model) {
         model.addAttribute("all", platformService.findAll());
         log.info("node/platform/all");

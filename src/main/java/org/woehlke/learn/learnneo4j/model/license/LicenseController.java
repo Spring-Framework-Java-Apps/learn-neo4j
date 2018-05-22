@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/node/license/")
+@RequestMapping("/node/license")
 public class LicenseController {
 
     private static Logger log = LoggerFactory.getLogger(LicenseController.class.getName());
@@ -27,7 +27,7 @@ public class LicenseController {
         return "all Licenses";
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public String greeting(Model model) {
         model.addAttribute("all", licenseService.findAll());
         log.info("/node/license/all");

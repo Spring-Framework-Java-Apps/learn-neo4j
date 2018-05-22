@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.learn.learnneo4j.model.platform.PlatformController;
 
 @Controller
-@RequestMapping("/db/Portinfo/")
+@RequestMapping("/db/Portinfo")
 public class PortinfoController {
 
     private static Logger log = LoggerFactory.getLogger(PlatformController.class.getName());
@@ -21,7 +21,7 @@ public class PortinfoController {
         return "Portinfo";
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public String greeting(Model model) {
         model.addAttribute("all", portinfoService.findAll());
         log.info("db/portinfo/all");
