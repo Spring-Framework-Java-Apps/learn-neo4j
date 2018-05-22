@@ -1,0 +1,22 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:insert="template :: tw_head">
+    <title th:replace="${title}">Nodes</title>
+</head>
+<body th:insert="template :: tw_body">
+
+<div class="container" th:replace="tw_main_app">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-12">
+            <h2>All Portinfos:</h2>
+            <hr/>
+            <ul th:each="item : ${all}">
+                <li th:text="${item.name}" />
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
