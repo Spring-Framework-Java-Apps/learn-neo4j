@@ -5,18 +5,24 @@
 </head>
 <body th:insert="template :: tw_body">
 
-<div class="container" th:replace="tw_main_app">
-    <!-- Example row of columns -->
-    <div class="row">
-        <div class="col-md-12">
-            <h2>All Categories:</h2>
-            <hr/>
-            <ul th:each="item : ${all}">
-                <li th:text="${item.name}" />
-            </ul>
+<body th:insert="template :: tw_body">
+
+<main role="main" th:insert="tw_main">
+
+    <div class="container" th:replace="template :: tw_main_app">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2>All Categories:</h2>
+                <hr/>
+                <ul th:each="item : ${all}">
+                    <li th:text="${item.name}" />
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+
+</main>
 
 </body>
 </html>
