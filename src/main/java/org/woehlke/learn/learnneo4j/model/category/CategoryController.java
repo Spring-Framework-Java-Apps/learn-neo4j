@@ -38,7 +38,7 @@ public class CategoryController {
             log.info(category.toString());
         }
         model.addAttribute("all", all);
-        log.info("/node/category/all");
-        return "/node/category/all";
+        log.info("node/category/all");
+        return "node/category/all";
     }
 }
