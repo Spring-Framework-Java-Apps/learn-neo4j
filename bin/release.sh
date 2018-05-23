@@ -13,9 +13,9 @@ export BTW17_FACEBOOK_APP_ID=1721279777913278
 export BTW17_TWITTER_CARD_SITE=port80guru
 export BTW17_TWITTER_CARD_CREATOR=port80guru
 
-./mvnw clean install
+../mvnw clean install
 
-./mvnw clean release:prepare
+../mvnw clean release:prepare
 
 echo "./mvnw release:perform"
 

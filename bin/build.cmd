@@ -5,4 +5,8 @@
 @REM echo %MAVEN_BATCH_PAUSE%
 @REM echo %MAVEN_OPTS%
 
+call config.cmd
+
+cd ..
+
 mvnw.cmd clean install dependency:tree site

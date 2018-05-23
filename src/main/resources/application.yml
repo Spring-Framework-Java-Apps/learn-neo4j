@@ -54,20 +54,12 @@ spring:
     exceptiontranslation:
       enabled: true
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/learn-neo4j?user=jdbc&password=jdbcpwd&schema=public'
-    jdbcUrl:  'jdbc:postgresql://localhost:5432/learn-neo4j?user=jdbc&password=jdbcpwd&schema=public'
+    url: ${DATABASE_URL} 'jdbc:postgresql://localhost:5432/learn-neo4j?user=jdbc&password=jdbcpwd&schema=public'
+    jdbcUrl: ${DATABASE_URL} 'jdbc:postgresql://localhost:5432/learn-neo4j?user=jdbc&password=jdbcpwd&schema=public'
     username: jdbc
     password: jdbcpwd
     driver-class-name: org.postgresql.Driver
-    #generate-unique-name: true
     continue-on-error: true
-    #schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
-    #data: classpath:org/springframework/session/jdbc/data-postgresql.sql
-    #spring.datasource.data
-    #schema: public
-    #name: Learnneo4jDS
-    #type: com.zaxxer.hikari.HikariDataSource
-    #platform: postgresql
     platform: POSTGRESQL
     tomcat:
       max-active: 20
@@ -139,18 +131,27 @@ spring:
 ---
 spring:
   profiles: travis
+  datasource:
+    url: ${DATABASE_URL}
+    jdbcUrl: ${DATABASE_URL}
 logging:
   config: classpath:logback-travis.xml
   file: logging-travis.log
 ---
 spring:
   profiles: alltests
+  datasource:
+    url: ${DATABASE_URL}
+    jdbcUrl: ${DATABASE_URL}
 logging:
   config: classpath:logback-alltests.xml
   file: logging-alltests.log
 ---
 spring:
   profiles: smoketests
+  datasource:
+    url: ${DATABASE_URL}
+    jdbcUrl: ${DATABASE_URL}
 logging:
   config: classpath:logback-smoketests.xml
   file: logging-smoketests.log

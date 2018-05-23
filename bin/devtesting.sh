@@ -2,8 +2,7 @@
 
 export BTW17_LOGIN_USERNAME=blubb
 export BTW17_LOGIN_PASSWORD=blablablablablablablablabla
-#export BTW17_JPA_HIBERNATE_DDL_AUTO=update
-export BTW17_JPA_HIBERNATE_DDL_AUTO=drop-create
+export BTW17_JPA_HIBERNATE_DDL_AUTO=update
 export BTW17_GOOGLE_APS_API_KEY=AIzaSyCMWLD6SK1QY3f-94mDS6x7u_jxwYASgqY
 export BTW17_GOOGLE_ANALYTICS_ID=UA-17174370-11
 export BTW17_GOOGLE_WEBMASTER_TOOLS_ID=3eksTC3Rvao6fLvSUwoRECBwd9Gdg4F51IhOE3DD-T8
@@ -21,12 +20,12 @@ psql -U kandidatentest < etc/drop-tables.sql
 #psql -c 'GRANT pg_signal_backend, postgres TO kandidatentest WITH ADMIN OPTION;' -U postgres
 #psql -c "CREATE DATABASE kandidatentest WITH OWNER = kandidatentest TEMPLATE = template1 ENCODING = 'UTF8' LC_COLLATE = 'de_DE.UTF-8' LC_CTYPE = 'de_DE.UTF-8' CONNECTION LIMIT = -1;" -U postgres
 
-psql -c 'select * from version();' -U kandidatentest
-psql -c '\l' -U postgres
-psql -c '\dg' -U postgres
-psql -c '\dn' -U postgres
+#psql -c 'select * from version();' -U kandidatentest
+#psql -c '\l' -U postgres
+#psql -c '\dg' -U postgres
+#psql -c '\dn' -U postgres
 
-./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-./mvnw clean site site:deploy -Ptravis -Dtest=AlphaTopLevelSuiteIT  -B -V
+../mvnw clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+../mvnw clean test -Pdevtest -Dtest=AlphaTopLevelSuiteIT -Dmaven.javadoc.skip=true -B -V
 
 exit 0
