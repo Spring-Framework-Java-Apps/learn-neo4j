@@ -1,1 +1,1 @@
-mvnw clean spring-boot:run
+mvnw.cmd clean spring-boot:run
