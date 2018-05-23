@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.woehlke.learn.learnneo4j.configuration.PageContentPopulator;
+import org.woehlke.learn.learnneo4j.frontend.model.PageContent;
 import org.woehlke.learn.learnneo4j.model.common.GraphNodeController;
 
 @Controller
@@ -17,6 +19,9 @@ public class PlatformController implements GraphNodeController {
     public String findAll(Model model) {
         model.addAttribute("all", platformService.findAll());
         model.addAttribute("title", "Platform.findAll");
+        PageContent pageContent = pageContentPopulator.pageContentSetSTandardValues("/adm//portinfo/available/fetch");
+        log.debug(pageContent.toString());
+        model.addAttribute("pageContent", pageContent);
         log.info("graph/platform/all");
         return "graph/platform/all";
     }
@@ -26,8 +31,11 @@ public class PlatformController implements GraphNodeController {
 
     private final PlatformService platformService;
 
+    private final PageContentPopulator pageContentPopulator;
+
     @Autowired
-    public PlatformController(PlatformService platformService) {
+    public PlatformController(PlatformService platformService, PageContentPopulator pageContentPopulator) {
         this.platformService = platformService;
+        this.pageContentPopulator = pageContentPopulator;
     }
 }

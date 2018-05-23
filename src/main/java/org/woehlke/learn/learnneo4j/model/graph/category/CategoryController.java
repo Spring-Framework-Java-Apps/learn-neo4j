@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.woehlke.learn.learnneo4j.configuration.PageContentPopulator;
+import org.woehlke.learn.learnneo4j.frontend.model.PageContent;
 import org.woehlke.learn.learnneo4j.model.common.GraphNodeController;
 import org.woehlke.learn.learnneo4j.model.graph.Category;
 
@@ -27,6 +29,9 @@ public class CategoryController implements GraphNodeController {
         }
         model.addAttribute("all", all);
         model.addAttribute("tizle", "Category.findAll");
+        PageContent pageContent = pageContentPopulator.pageContentSetSTandardValues("/adm//portinfo/available/fetch");
+        log.debug(pageContent.toString());
+        model.addAttribute("pageContent", pageContent);
         log.info("graph/category/all");
         return "graph/category/all";
     }
@@ -36,9 +41,13 @@ public class CategoryController implements GraphNodeController {
 
     private final CategoryService categoryService;
 
+
+    private final PageContentPopulator pageContentPopulator;
+
     @Autowired
-    public CategoryController(CategoryService categoryService) {
+    public CategoryController(CategoryService categoryService, PageContentPopulator pageContentPopulator) {
         this.categoryService = categoryService;
+        this.pageContentPopulator = pageContentPopulator;
     }
 
 }

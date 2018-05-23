@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -28,6 +29,106 @@ public class MyApplicationProperties {
     @NotNull
     private Boolean createTestDataAtStartup;
 
+    @NotNull
+    private String pageSubTitle;
+
+    @Valid
+    private Seo seo = new Seo();
+
+    @Validated
+    public static class Seo {
+
+        @NotNull
+        private String googleMapsApiKey;
+
+        @NotNull
+        private String googleAnalyticsKey;
+
+        @NotNull
+        private String twitterCardSite;
+
+        @NotNull
+        private String twitterCardCreator;
+
+        @NotNull
+        private String msvalidateKey;
+
+        @NotNull
+        private String googleSiteVerification;
+
+        @NotNull
+        private String facebookAppId;
+
+        public String getGoogleMapsApiKey() {
+            return googleMapsApiKey;
+        }
+
+        public void setGoogleMapsApiKey(String googleMapsApiKey) {
+            this.googleMapsApiKey = googleMapsApiKey;
+        }
+
+        public String getGoogleAnalyticsKey() {
+            return googleAnalyticsKey;
+        }
+
+        public void setGoogleAnalyticsKey(String googleAnalyticsKey) {
+            this.googleAnalyticsKey = googleAnalyticsKey;
+        }
+
+        public String getTwitterCardSite() {
+            return twitterCardSite;
+        }
+
+        public void setTwitterCardSite(String twitterCardSite) {
+            this.twitterCardSite = twitterCardSite;
+        }
+
+        public String getTwitterCardCreator() {
+            return twitterCardCreator;
+        }
+
+        public void setTwitterCardCreator(String twitterCardCreator) {
+            this.twitterCardCreator = twitterCardCreator;
+        }
+
+        public String getMsvalidateKey() {
+            return msvalidateKey;
+        }
+
+        public void setMsvalidateKey(String msvalidateKey) {
+            this.msvalidateKey = msvalidateKey;
+        }
+
+        public String getGoogleSiteVerification() {
+            return googleSiteVerification;
+        }
+
+        public void setGoogleSiteVerification(String googleSiteVerification) {
+            this.googleSiteVerification = googleSiteVerification;
+        }
+
+        public String getFacebookAppId() {
+            return facebookAppId;
+        }
+
+        public void setFacebookAppId(String facebookAppId) {
+            this.facebookAppId = facebookAppId;
+        }
+
+        @Override
+        public String toString() {
+            return "Seo{" +
+                "googleMapsApiKey='" + googleMapsApiKey + '\'' +
+                ", googleAnalyticsKey='" + googleAnalyticsKey + '\'' +
+                ", twitterCardSite='" + twitterCardSite + '\'' +
+                ", twitterCardCreator='" + twitterCardCreator + '\'' +
+                ", msvalidateKey='" + msvalidateKey + '\'' +
+                ", googleSiteVerification='" + googleSiteVerification + '\'' +
+                ", facebookAppId='" + facebookAppId + '\'' +
+                '}';
+        }
+    }
+
     public String[] getWebSecurityConfigPublicPathsAsArray() {
         int size = webSecurityConfigPublicPaths.size();
         String[] myArray = new String[size];
@@ -35,6 +136,14 @@ public class MyApplicationProperties {
             myArray[i] = webSecurityConfigPublicPaths.get(i);
         }
         return myArray;
+    }
+
+    public String getPageSubTitle() {
+        return pageSubTitle;
+    }
+
+    public void setPageSubTitle(String pageSubTitle) {
+        this.pageSubTitle = pageSubTitle;
     }
 
     public String getFilesystemWorkdir() {
@@ -77,12 +186,23 @@ public class MyApplicationProperties {
         this.createTestDataAtStartup = createTestDataAtStartup;
     }
 
+    public Seo getSeo() {
+        return seo;
+    }
+
+    public void setSeo(Seo seo) {
+        this.seo = seo;
+    }
+
     @Override
     public String toString() {
-        return "PortinfoProperties{" +
-            "loginUsername='" + loginUsername + '\'' +
+        return "MyApplicationProperties{" +
+            "filesystemWorkdir='" + filesystemWorkdir + '\'' +
+            ", loginUsername='" + loginUsername + '\'' +
             ", loginPassword='" + loginPassword + '\'' +
             ", webSecurityConfigPublicPaths=" + webSecurityConfigPublicPaths +
+            ", createTestDataAtStartup=" + createTestDataAtStartup +
+            ", seo=" + seo +
             '}';
     }
 }

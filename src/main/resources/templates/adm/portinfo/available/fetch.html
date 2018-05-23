@@ -6,6 +6,7 @@
 </head>
 <body th:include="template :: tw-body">
 
+<main role="main" th:include="layoutMain :: tw-main">
 <div class="container" th:replace="template :: tw_main_app">
     <!-- Example row of columns -->
     <div class="row">
@@ -14,6 +15,6 @@
         </div>
     </div>
 </div>
-
+</main>
 </body>
 </html>

@@ -106,6 +106,15 @@ org:
           loginUsername: tw
           loginPassword: blablabla
           filesystemWorkdir: ports
+          seo:
+            googleMapsApiKey: ${GRAPH_DB_GOOGLE_APS_API_KEY}
+            googleAnalyticsKey: ${GRAPH_DB_GOOGLE_ANALYTICS_ID}
+            googleSiteVerification: ${GRAPH_DB_GOOGLE_WEBMASTER_TOOLS_ID}
+            msvalidateKey: ${GRAPH_DB_MICROSOFT_WEBMASTER_TOOLS_ID}
+            facebookAppId: ${GRAPH_DB_FACEBOOK_APP_ID}
+            twitterCardSite: ${GRAPH_DB_TWITTER_CARD_SITE}
+            twitterCardCreator: ${GRAPH_DB_TWITTER_CARD_CREATOR}
+          pageSubTitle: Graph DB. Power of cool Persistence with Neo4J and Spring-Boot.
           webSecurityConfigPublicPaths:
             - "/welcome"
             - "/welcome/**"
