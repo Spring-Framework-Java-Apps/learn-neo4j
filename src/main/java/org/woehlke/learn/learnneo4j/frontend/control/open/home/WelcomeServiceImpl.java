@@ -1,6 +1,8 @@
 package org.woehlke.learn.learnneo4j.frontend.control.open.home;
 
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.woehlke.learn.learnneo4j.model.graph.maintainer.MaintainerRepository;
@@ -10,7 +12,10 @@ import org.woehlke.learn.learnneo4j.model.graph.variant.VariantRepository;
 import org.woehlke.learn.learnneo4j.model.graph.category.CategoryRepository;
 import org.woehlke.learn.learnneo4j.model.graph.license.LicenseRepository;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class WelcomeServiceImpl implements WelcomeService {
 
     private final PortRepository portRepository;
@@ -35,4 +40,5 @@ public class WelcomeServiceImpl implements WelcomeService {
         this.variantRepository = variantRepository;
     }
 
+    private static final Log log = LogFactory.getLog(WelcomeServiceImpl.class);
 }

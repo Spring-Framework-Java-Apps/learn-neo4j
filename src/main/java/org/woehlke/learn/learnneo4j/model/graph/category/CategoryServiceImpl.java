@@ -1,5 +1,7 @@
 package org.woehlke.learn.learnneo4j.model.graph.category;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,5 +20,7 @@ public class CategoryServiceImpl extends Neo4jServiceImpl<Category,Long> impleme
     protected CategoryRepository getRepository(){
         return (CategoryRepository) super.getRepository();
     }
+
+    private static final Log log = LogFactory.getLog(CategoryServiceImpl.class);
 
 }

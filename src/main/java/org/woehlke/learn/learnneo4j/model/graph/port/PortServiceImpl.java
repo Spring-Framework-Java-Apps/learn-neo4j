@@ -1,5 +1,7 @@
 package org.woehlke.learn.learnneo4j.model.graph.port;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +12,7 @@ import org.woehlke.learn.learnneo4j.model.graph.category.CategoryRepository;
 import org.woehlke.learn.learnneo4j.model.graph.license.LicenseRepository;
 import org.woehlke.learn.learnneo4j.model.graph.maintainer.MaintainerRepository;
 import org.woehlke.learn.learnneo4j.model.graph.platform.PlatformRepository;
+import org.woehlke.learn.learnneo4j.model.graph.variant.VariantServiceImpl;
 
 @Service
 @Transactional
@@ -39,5 +42,6 @@ public class PortServiceImpl extends Neo4jServiceImpl<Port,Long> implements Port
         return (PortRepository) super.getRepository();
     }
 
+    private static final Log log = LogFactory.getLog(PortServiceImpl.class);
 
 }

@@ -1,7 +1,7 @@
 package org.woehlke.learn.learnneo4j.configuration;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -15,7 +15,7 @@ import org.woehlke.learn.learnneo4j.model.graph.category.CategoryRepository;
 @Component
 public class StartupListener implements ApplicationListener<ContextRefreshedEvent> {
 
-    private static Logger log = LoggerFactory.getLogger(StartupListener.class.getName());
+    private static final Log log = LogFactory.getLog(StartupListener.class);
 
     private final CategoryRepository categoryRepository;
 

@@ -1,20 +1,21 @@
 package org.woehlke.learn.learnneo4j.frontend.control.closed.terminal;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import org.woehlke.learn.learnneo4j.middleware.StreamGobbler;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.concurrent.Executors;
 
 @Service
+@Transactional
 public class TerminalServiceImpl implements TerminalService {
 
-    private static Logger log = LoggerFactory.getLogger(TerminalServiceImpl.class.getName());
-
+    @Override
     public void getAllAvailablePorts() {
         int exitCode = 0;
         try {
@@ -47,4 +48,6 @@ public class TerminalServiceImpl implements TerminalService {
         }
         assert exitCode == 0;
     }
+
+    private static final Log log = LogFactory.getLog(TerminalServiceImpl.class);
 }

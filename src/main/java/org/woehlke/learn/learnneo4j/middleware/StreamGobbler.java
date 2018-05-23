@@ -1,14 +1,13 @@
 package org.woehlke.learn.learnneo4j.middleware;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import java.io.*;
 import java.util.concurrent.Callable;
 
 public class StreamGobbler implements Callable<StreamGobbler> {
 
-    private static Logger log = LoggerFactory.getLogger(StreamGobbler.class.getName());
+    private static final Log log = LogFactory.getLog(StreamGobbler.class);
 
     protected final InputStream inStream;
     protected final OutputStream outStream;
