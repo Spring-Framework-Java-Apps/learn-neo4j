@@ -221,10 +221,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 			</plugin>
-            <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-            </plugin>
+      <plugin>
+          <groupId>pl.project13.maven</groupId>
+          <artifactId>git-commit-id-plugin</artifactId>
+      </plugin>
 		</plugins>
 	</build>
 
@@ -265,7 +265,7 @@
       </build>
     </profile>
     <profile>
-      <id>devtest</id>
+      <id>smoketests</id>
       <build>
         <plugins>
           <plugin>
@@ -273,7 +273,25 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <configuration>
               <systemPropertyVariables>
-                <spring.profiles.active>devtest</spring.profiles.active>
+                <spring.profiles.active>smoketests</spring.profiles.active>
+                <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
+                <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
+              </systemPropertyVariables>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>alltests</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+              <systemPropertyVariables>
+                <spring.profiles.active>alltests</spring.profiles.active>
                 <failsafe.skipAfterFailureCount>1</failsafe.skipAfterFailureCount>
                 <surefire.skipAfterFailureCount>1</surefire.skipAfterFailureCount>
               </systemPropertyVariables>
@@ -283,6 +301,7 @@
       </build>
     </profile>
   </profiles>
+
   <reporting>
     <plugins>
       <plugin>
