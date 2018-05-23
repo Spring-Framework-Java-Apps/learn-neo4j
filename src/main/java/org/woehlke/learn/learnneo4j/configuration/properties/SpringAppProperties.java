@@ -37,19 +37,28 @@ public class SpringAppProperties {
     public static class Datasource {
 
         @NotNull
+        private String url;
+
+        @NotNull
         private String driverClassName;
 
         @NotNull
         private String platform;
 
         @NotNull
-        private String url;
-
-        @NotNull
         private Boolean continueOnError;
 
         @NotNull
         private String schema;
+
+        @NotNull
+        private Boolean generateUniqueName;
+
+        @NotNull
+        private String name;
+
+        @NotNull
+        private String type;
 
         public String getDriverClassName() {
             return driverClassName;
@@ -89,6 +98,44 @@ public class SpringAppProperties {
 
         public void setSchema(String schema) {
             this.schema = schema;
+        }
+
+        public Boolean getGenerateUniqueName() {
+            return generateUniqueName;
+        }
+
+        public void setGenerateUniqueName(Boolean generateUniqueName) {
+            this.generateUniqueName = generateUniqueName;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        @Override
+        public String toString() {
+            return "Datasource{" +
+                "url='" + url + '\'' +
+                ", driverClassName='" + driverClassName + '\'' +
+                ", platform='" + platform + '\'' +
+                ", continueOnError=" + continueOnError +
+                ", schema='" + schema + '\'' +
+                ", generateUniqueName=" + generateUniqueName +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                '}';
         }
     }
 
@@ -144,6 +191,13 @@ public class SpringAppProperties {
                 public void setDialect(String dialect) {
                     this.dialect = dialect;
                 }
+
+                @Override
+                public String toString() {
+                    return "Hibernate{" +
+                        "dialect='" + dialect + '\'' +
+                        '}';
+                }
             }
 
             public Hibernate getHibernate() {
@@ -154,6 +208,12 @@ public class SpringAppProperties {
                 this.hibernate = hibernate;
             }
 
+            @Override
+            public String toString() {
+                return "Properties{" +
+                    "hibernate=" + hibernate +
+                    '}';
+            }
         }
 
         public Hibernate getHibernate() {
@@ -196,6 +256,16 @@ public class SpringAppProperties {
             this.openInView = openInView;
         }
 
+        @Override
+        public String toString() {
+            return "Jpa{" +
+                "generateDdl=" + generateDdl +
+                ", showSql=" + showSql +
+                ", openInView=" + openInView +
+                ", hibernate=" + hibernate +
+                ", properties=" + properties +
+                '}';
+        }
     }
 
     @Validated
@@ -226,6 +296,13 @@ public class SpringAppProperties {
                 public void setEnabled(Boolean enabled) {
                     this.enabled = enabled;
                 }
+
+                @Override
+                public String toString() {
+                    return "Initializer{" +
+                        "enabled=" + enabled +
+                        '}';
+                }
             }
 
             public Initializer getInitializer() {
@@ -234,6 +311,13 @@ public class SpringAppProperties {
 
             public void setInitializer(Initializer initializer) {
                 this.initializer = initializer;
+            }
+
+            @Override
+            public String toString() {
+                return "Jdbc{" +
+                    "initializer=" + initializer +
+                    '}';
             }
         }
 
@@ -252,6 +336,14 @@ public class SpringAppProperties {
         public void setJdbc(Jdbc jdbc) {
             this.jdbc = jdbc;
         }
+
+        @Override
+        public String toString() {
+            return "Session{" +
+                "storeType='" + storeType + '\'' +
+                ", jdbc=" + jdbc +
+                '}';
+        }
     }
 
     @Validated
@@ -267,6 +359,13 @@ public class SpringAppProperties {
         public void setCache(Boolean cache) {
             this.cache = cache;
         }
+
+        @Override
+        public String toString() {
+            return "Template{" +
+                "cache=" + cache +
+                '}';
+        }
     }
 
     @Validated
@@ -281,6 +380,13 @@ public class SpringAppProperties {
 
         public void setCache(Boolean cache) {
             this.cache = cache;
+        }
+
+        @Override
+        public String toString() {
+            return "Thymeleaf{" +
+                "cache=" + cache +
+                '}';
         }
     }
 
@@ -332,8 +438,20 @@ public class SpringAppProperties {
         this.profiles = profiles;
     }
 
+
     @Override
     public String toString() {
+        return "SpringAppProperties{" +
+            "profiles='" + profiles + '\'' +
+            ", datasource=" + datasource +
+            ", jpa=" + jpa +
+            ", session=" + session +
+            ", template=" + template +
+            ", thymeleaf=" + thymeleaf +
+            '}';
+    }
+
+    public String toString2() {
         List<String> outputLines = new ArrayList<>();
         outputLines.add("spring.profiles =                                     "+this.getProfiles());
         outputLines.add("spring.template.cache =                               "+this.getTemplate().getCache());

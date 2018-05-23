@@ -12,7 +12,6 @@ import org.woehlke.learn.learnneo4j.model.graph.category.CategoryRepository;
 import org.woehlke.learn.learnneo4j.model.graph.license.LicenseRepository;
 import org.woehlke.learn.learnneo4j.model.graph.maintainer.MaintainerRepository;
 import org.woehlke.learn.learnneo4j.model.graph.platform.PlatformRepository;
-import org.woehlke.learn.learnneo4j.model.graph.variant.VariantServiceImpl;
 
 @Service
 @Transactional

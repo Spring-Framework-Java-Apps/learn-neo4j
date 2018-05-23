@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.learn.learnneo4j.model.graph.Maintainer;
 import org.woehlke.learn.learnneo4j.model.common.Neo4jServiceImpl;
-import org.woehlke.learn.learnneo4j.model.graph.platform.PlatformServiceImpl;
 
 @Service
 @Transactional

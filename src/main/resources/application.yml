@@ -1,4 +1,39 @@
+endpoints:
+  env:
+    - keys-to-sanitize: "password"
+    - keys-to-sanitize: "secret"
+    - keys-to-sanitize: "key"
+    - keys-to-sanitize: "passwort"
+  health:
+    sensitive: false
+  endpoints:
+    shutdown:
+      enabled: false
+server:
+  error:
+    path: /fehler
+  compression:
+    enabled: true
+    min-response-size: 2048
+hibernate:
+  dialect: org.hibernate.dialect.PostgreSQL94Dialect
+info:
+  application:
+    artifactId: @project.artifactId@
+    description: @project.description@
+    groupId: @project.groupId@
+    name: @project.name@
+    version: @project.version@
+management:
+  address: 127.0.0.1
+  context-path: "/manage"
+  security:
+    enabled: true
 spring:
+  application:
+      admin:
+        enabled: false
+      name: @project.name@
   data:
     neo4j:
       open-in-view: true
@@ -18,29 +53,40 @@ spring:
   dao:
     exceptiontranslation:
       enabled: true
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/learn-neo4j?user=jdbc&password=jdbcpwd'
+    # username: jdbc
+    # password: jdbcpwd
+    driver-class-name: org.postgresql.Driver
+    generate-unique-name: true
+    continue-on-error: true
+    schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
+    #name: Learnneo4jDS
+    #type: com.zaxxer.hikari.HikariDataSource
+    platform: POSTGRESQL
+    tomcat:
+      max-active: 20
   jpa:
       database-platform: org.hibernate.dialect.PostgreSQL95Dialect
       hibernate:
         ddl-auto: create-drop
       properties:
         hibernate:
+          dialect: org.hibernate.dialect.PostgreSQL94Dialect
           globally_quoted_identifiers: true
           temp:
             use_jdbc_metadata_defaults: false
       open-in-view: true
       generate-ddl: true
       show-sql: true
-  datasource:
-    url: "jdbc:postgresql://localhost:5432/learn-neo4j"
-    username: jdbc
-    password: jdbcpwd
-    driver-class-name: org.postgresql.Driver
-    generate-unique-name: true
-    continue-on-error: true
-    schema: public
-    name: Learnneo4jDS
-    type: org.postgresql.jdbc3.Jdbc3PoolingDataSource
-    platform: POSTGRESQL
+  session:
+      store-type: jdbc
+      jdbc:
+        initializer:
+          enabled: true
+  devtools:
+      livereload:
+        enabled: true
   template:
     cache: false
   thymeleaf:
@@ -51,7 +97,6 @@ org:
   woehlke:
     learn:
       learnneo4j:
-          pageSize: 30
           loginUsername: tw
           loginPassword: blablabla
           filesystemWorkdir: ports
@@ -79,10 +124,41 @@ spring:
 ---
 spring:
   profiles: travis
----
-spring:
-  profiles: smoketests
+logging:
+  config: classpath:logback-travis.xml
+  file: logging-travis.log
 ---
 spring:
   profiles: alltests
+logging:
+  config: classpath:logback-alltests.xml
+  file: logging-alltests.log
+---
+spring:
+  profiles: smoketests
+logging:
+  config: classpath:logback-smoketests.xml
+  file: logging-smoketests.log
+  level:
+    org:
+      woehlke:
+        learn:
+          learnneo4j:
+            middleware: DEBUG
+            model:
+              orm:
+                portinfo: DEBUG
+              graph:
+                category: DEBUG
+                license: DEBUG
+                maintainer: DEBUG
+                platform: DEBUG
+                port: DEBUG
+                variant: DEBUG
+            frontend:
+              control:
+                closed:
+                  terminal: DEBUG
+                open:
+                  home: DEBUG
 

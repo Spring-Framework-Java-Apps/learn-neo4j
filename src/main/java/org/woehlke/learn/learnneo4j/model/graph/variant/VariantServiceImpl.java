@@ -5,7 +5,6 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.learn.learnneo4j.frontend.control.open.home.WelcomeServiceImpl;
 import org.woehlke.learn.learnneo4j.model.graph.Variant;
 import org.woehlke.learn.learnneo4j.model.common.Neo4jServiceImpl;
 
