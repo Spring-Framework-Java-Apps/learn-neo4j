@@ -251,6 +251,39 @@ public class MySpringBootProperties {
                     '}';
             }
         }
+
+        public Neo4j getNeo4j() {
+            return neo4j;
+        }
+
+        public void setNeo4j(Neo4j neo4j) {
+            this.neo4j = neo4j;
+        }
+
+        public Jpa getJpa() {
+            return jpa;
+        }
+
+        public void setJpa(Jpa jpa) {
+            this.jpa = jpa;
+        }
+
+        public Web getWeb() {
+            return web;
+        }
+
+        public void setWeb(Web web) {
+            this.web = web;
+        }
+
+        @Override
+        public String toString() {
+            return "Data{" +
+                "neo4j=" + neo4j +
+                ", jpa=" + jpa +
+                ", web=" + web +
+                '}';
+        }
     }
 
     @Validated
@@ -389,6 +422,13 @@ public class MySpringBootProperties {
 
             public void setDdlAuto(String ddlAuto) {
                 this.ddlAuto = ddlAuto;
+            }
+
+            @Override
+            public String toString() {
+                return "Hibernate{" +
+                    "ddlAuto='" + ddlAuto + '\'' +
+                    '}';
             }
         }
 
@@ -657,7 +697,6 @@ public class MySpringBootProperties {
     public void setProfiles(String profiles) {
         this.profiles = profiles;
     }
-
 
     public Data getData() {
         return data;

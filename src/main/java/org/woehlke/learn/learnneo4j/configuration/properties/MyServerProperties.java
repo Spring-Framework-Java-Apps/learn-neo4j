@@ -34,6 +34,12 @@ public class MyServerProperties {
             this.path = path;
         }
 
+        @Override
+        public String toString() {
+            return "Error{" +
+                "path='" + path + '\'' +
+                '}';
+        }
     }
 
     @Validated
@@ -59,6 +65,14 @@ public class MyServerProperties {
 
         public void setMinResponseSize(Integer minResponseSize) {
             this.minResponseSize = minResponseSize;
+        }
+
+        @Override
+        public String toString() {
+            return "Compression{" +
+                "enabled=" + enabled +
+                ", minResponseSize=" + minResponseSize +
+                '}';
         }
     }
 
