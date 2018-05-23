@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>learn-neo4j</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Learn Neo4J. First Use Case for a Graph Database</description>
   <url>http://localhost/mvn/learn-neo4j</url>
 
 	<parent>
@@ -72,7 +72,7 @@
 	<dependencies>
 
 		<!-- frontend -->
-		<!--
+
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
@@ -93,7 +93,6 @@
             <artifactId>popper.js</artifactId>
             <version>1.14.3</version>
         </dependency>
--->
 
 		<!--- spring boot -->
 		<dependency>
