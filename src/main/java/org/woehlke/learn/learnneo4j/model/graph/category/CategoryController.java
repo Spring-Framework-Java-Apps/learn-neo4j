@@ -29,7 +29,7 @@ public class CategoryController implements GraphNodeController {
         }
         model.addAttribute("all", all);
         model.addAttribute("tizle", "Category.findAll");
-        PageContent pageContent = pageContentPopulator.pageContentSetSTandardValues("/adm//portinfo/available/fetch");
+        PageContent pageContent = pageContentPopulator.pageContentSetSTandardValues("/graph/category/all");
         log.debug(pageContent.toString());
         model.addAttribute("pageContent", pageContent);
         log.info("graph/category/all");
