@@ -54,8 +54,8 @@ spring:
     exceptiontranslation:
       enabled: true
   datasource:
-    url: ${DATABASE_URL} 'jdbc:postgresql://localhost:5432/learn-neo4j?user=jdbc&password=jdbcpwd&schema=public'
-    jdbcUrl: ${DATABASE_URL} 'jdbc:postgresql://localhost:5432/learn-neo4j?user=jdbc&password=jdbcpwd&schema=public'
+    url: ${DATABASE_URL}
+    jdbcUrl: ${DATABASE_URL}
     username: jdbc
     password: jdbcpwd
     driver-class-name: org.postgresql.Driver
@@ -77,13 +77,14 @@ spring:
       generate-ddl: true
       show-sql: true
   session:
-      store-type: jdbc
-      jdbc:
-        initializer:
-          enabled: true
-  devtools:
-      livereload:
+    store-type: jdbc
+    jdbc:
+      schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
+      initializer:
         enabled: true
+  devtools:
+    livereload:
+      enabled: true
   template:
     cache: false
   thymeleaf:
