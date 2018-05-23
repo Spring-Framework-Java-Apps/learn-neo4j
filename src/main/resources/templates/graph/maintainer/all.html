@@ -1,0 +1,20 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="layoutMain :: tw_head">
+    <title th:text="${title}">Nodes</title>
+</head>
+<body th:include="layoutMain :: tw_body">
+  <div class="container" th:replace="template :: tw_main_app">
+      <!-- Example row of columns -->
+      <div class="row">
+          <div class="col-md-12">
+              <h2>All Maintainer:</h2>
+              <hr/>
+              <ul th:each="item : ${all}">
+                  <li th:text="${item.name}" />
+              </ul>
+          </div>
+      </div>
+  </div>
+</body>
+</html>

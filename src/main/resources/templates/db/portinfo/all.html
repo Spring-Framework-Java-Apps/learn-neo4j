@@ -1,9 +1,9 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:include="template :: tw_head">
-    <title th:replace="${title}">Nodes</title>
+<head th:include="layoutMain :: tw_head">
+    <title th:text="${title}">Nodes</title>
 </head>
-<body th:include="template :: tw_body">
+<body th:include="layoutMain :: tw_body">
     <div class="container" th:replace="template :: tw_main_app">
         <!-- Example row of columns -->
         <div class="row">

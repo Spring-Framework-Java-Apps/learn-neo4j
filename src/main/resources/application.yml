@@ -1,0 +1,80 @@
+spring:
+  data:
+    neo4j:
+      open-in-view: true
+      username: neo4j
+      password: secret
+      repositories:
+        enabled: true
+    jpa:
+      repositories:
+        enabled: true
+    web:
+      pageable:
+        default-page-size: 20
+        max-page-size: 200
+        page-parameter: page
+        size-parameter: size
+  dao:
+    exceptiontranslation:
+      enabled: true
+  jpa:
+      database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+      hibernate:
+        ddl-auto: create-drop
+      properties:
+        hibernate:
+          globally_quoted_identifiers: true
+          temp:
+            use_jdbc_metadata_defaults: false
+      open-in-view: true
+      generate-ddl: true
+      show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/learn-neo4j
+    username: jdbc
+    password: jdbcpwd
+    driver-class-name: org.postgresql.Driver
+    generate-unique-name: true
+    name: Learnneo4jDS
+    type: org.postgresql.jdbc3.Jdbc3PoolingDataSource
+  thymeleaf:
+    enabled: true
+    check-template-location: true
+    cache: false
+org:
+  woehlke:
+    learn:
+      learnneo4j:
+          pageSize: 30
+          loginUsername: tw
+          loginPassword: blablabla
+          filesystemWorkdir: ports
+          webSecurityConfigPublicPaths:
+            - "/welcome"
+            - "/welcome/**"
+            - "/open/**"
+            - "/graph/**"
+            - "/db/**"
+            - "/img/*"
+            - "/img/**"
+            - "/css/*"
+            - "/css/**"
+            - "/favicon/*"
+            - "/favicon/**"
+            - "/js/*"
+            - "/js/**"
+            - "/map-icons/*"
+            - "/map-icons/**"
+            - "/webjars/*"
+            - "/webjars/**"
+---
+spring:
+  profiles: default
+---
+spring:
+  profiles: travis
+---
+spring:
+  profiles: travis
+
