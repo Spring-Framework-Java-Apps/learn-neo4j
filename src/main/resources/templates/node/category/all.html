@@ -4,7 +4,7 @@
     <title th:replace="${title}">Nodes</title>
 </head>
 <body th:include="template :: tw_body">
-    <main role="main" th:insert="template :: tw_main">
+    <main role="main" th:include="template :: tw_main">
         <div class="container" th:replace="template :: tw_main_app">
             <!-- Example row of columns -->
             <div class="row">
