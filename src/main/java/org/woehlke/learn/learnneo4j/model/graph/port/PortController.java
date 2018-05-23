@@ -22,7 +22,6 @@ public class PortController {
         this.portService = portService;
     }
 
-
     @ModelAttribute("title")
     public String getTitle(){
         return "all Categories";

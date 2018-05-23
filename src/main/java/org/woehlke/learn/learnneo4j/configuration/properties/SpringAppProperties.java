@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 @Validated
 @ConfigurationProperties(prefix="spring")
-public class SpringProperties {
+public class SpringAppProperties {
 
     @NotNull
     private String profiles;

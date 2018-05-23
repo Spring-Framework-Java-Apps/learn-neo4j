@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.woehlke.learn.learnneo4j.configuration.properties.MyAppProperties;
+import org.woehlke.learn.learnneo4j.configuration.properties.OtherAppProperties;
+import org.woehlke.learn.learnneo4j.configuration.properties.SpringAppProperties;
 import org.woehlke.learn.learnneo4j.model.graph.Category;
 import org.woehlke.learn.learnneo4j.model.graph.category.CategoryRepository;
 
@@ -16,9 +19,18 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 
     private final CategoryRepository categoryRepository;
 
+    private final MyAppProperties myAppProperties;
+
+    private final OtherAppProperties otherAppProperties;
+
+    private final SpringAppProperties springAppProperties;
+
     @Autowired
-    public StartupListener(CategoryRepository categoryRepository) {
+    public StartupListener(CategoryRepository categoryRepository, MyAppProperties myAppProperties, OtherAppProperties otherAppProperties, SpringAppProperties springAppProperties) {
         this.categoryRepository = categoryRepository;
+        this.myAppProperties = myAppProperties;
+        this.otherAppProperties = otherAppProperties;
+        this.springAppProperties = springAppProperties;
     }
 
     @Override
@@ -41,5 +53,9 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         log.info("Category found with findByCategory('www'):");
         log.info("--------------------------------");
         log.info(this.categoryRepository.findByName("www").toString());
+        log.info("--------------------------------");
+        log.info(myAppProperties.toString());
+        log.info(myAppProperties.toString());
+        log.info(myAppProperties.toString());
     }
 }

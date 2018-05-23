@@ -1,4 +1,4 @@
-package org.woehlke.learn.learnneo4j.port.test;
+package org.woehlke.learn.learnneo4j.frontend.control.closed.terminal.test;
 
 
 import org.junit.runner.RunWith;
@@ -7,5 +7,5 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PortControllerTests {
+public class TerminalControllerTests {
 }

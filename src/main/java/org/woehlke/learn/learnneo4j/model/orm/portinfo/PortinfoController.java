@@ -14,11 +14,6 @@ public class PortinfoController {
 
     private static Logger log = LoggerFactory.getLogger(PortinfoController.class.getName());
 
-    //@ModelAttribute("title")
-    //public String getTitle(){
-    //    return "Portinfo";
-    //}
-
     @GetMapping("/all")
     public String greeting(Model model) {
         model.addAttribute("all", portinfoService.findAll());

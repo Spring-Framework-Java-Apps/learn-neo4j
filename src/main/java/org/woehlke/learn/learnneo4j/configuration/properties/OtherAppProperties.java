@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 @Validated
 @ConfigurationProperties
-public class OtherProperties {
+public class OtherAppProperties {
 
     @Valid
     private Server server = new Server();

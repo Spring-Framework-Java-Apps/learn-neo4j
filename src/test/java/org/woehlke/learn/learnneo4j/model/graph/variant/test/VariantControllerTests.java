@@ -1,4 +1,4 @@
-package org.woehlke.learn.learnneo4j.variant.test;
+package org.woehlke.learn.learnneo4j.model.graph.variant.test;
 
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

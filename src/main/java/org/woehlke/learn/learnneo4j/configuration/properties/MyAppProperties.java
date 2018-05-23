@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 @Validated
 @ConfigurationProperties(prefix="org.woehlke.learn.learnneo4j")
-public class MyProperties {
+public class MyAppProperties {
 
   @NotNull
   private String filesystemWorkdir;
