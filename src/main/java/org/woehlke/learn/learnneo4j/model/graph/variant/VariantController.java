@@ -7,16 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.woehlke.learn.learnneo4j.model.common.GraphNodeController;
 
 @Controller
-@RequestMapping("/node/variant/")
-public class VariantController {
+@RequestMapping("/graph/variant/")
+public class VariantController implements GraphNodeController {
+
 
     @GetMapping("all")
-    public String all(Model model) {
+    public String findAll(Model model) {
         model.addAttribute("all", variantService.findAll());
-        return "node/variant/all";
+        model.addAttribute("title", "Variant.findAll");
+        log.info("graph/variant/all");
+        return "graph/variant/all";
     }
+
 
     private static final Log log = LogFactory.getLog(VariantController.class);
 

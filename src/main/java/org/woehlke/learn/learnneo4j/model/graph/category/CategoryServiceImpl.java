@@ -12,6 +12,11 @@ import org.woehlke.learn.learnneo4j.model.common.Neo4jServiceImpl;
 @Transactional
 public class CategoryServiceImpl extends Neo4jServiceImpl<Category,Long> implements CategoryService {
 
+    @Override
+    public Category findByName(String name) {
+        return this.getRepository().findByName(name);
+    }
+
     @Autowired
     public CategoryServiceImpl(CategoryRepository categoryRepository) {
         super(categoryRepository);

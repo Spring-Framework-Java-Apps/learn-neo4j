@@ -21,7 +21,7 @@
 
   <organization>
     <name>Thomas Woehlke</name>
-    <url>https://twitter.com/ThomasWoehlke</url>
+    <url>https://github.com/phasenraum2010</url>
   </organization>
 
   <inceptionYear>2018</inceptionYear>
@@ -37,7 +37,7 @@
     <developer>
       <name>Thomas Wöhlke</name>
       <email>thomas@woehlke.org</email>
-      <url>https://github.com/phasenraum2010</url>
+      <url>https://about.me/ThomasWoehlke</url>
     </developer>
   </developers>
 
@@ -50,7 +50,7 @@
 
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/phasenraum2010/btw17kandidaten/issues</url>
+    <url>https://github.com/phasenraum2010/learn-neo4j/issues</url>
   </issueManagement>
 
   <distributionManagement>

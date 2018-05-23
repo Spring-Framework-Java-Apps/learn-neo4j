@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.woehlke.learn.learnneo4j.configuration.properties.MyAppProperties;
+import org.woehlke.learn.learnneo4j.configuration.MyApplicationProperties;
 
 @Configuration
 @EnableSpringDataWebSupport
@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             .antMatchers(
-              myAppProperties.getWebSecurityConfigPublicPathsAsArray()
+              myApplicationProperties.getWebSecurityConfigPublicPathsAsArray()
             )
             .permitAll()
             .anyRequest().authenticated()
@@ -39,8 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        String user = myAppProperties.getLoginUsername();
-        String pwd = myAppProperties.getLoginPassword();
+        String user = myApplicationProperties.getLoginUsername();
+        String pwd = myApplicationProperties.getLoginPassword();
         String role = "USER";
         auth
             .inMemoryAuthentication()
@@ -48,10 +48,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public WebSecurityConfig(MyAppProperties myAppProperties) {
-      this.myAppProperties = myAppProperties;
+    public WebSecurityConfig(MyApplicationProperties myApplicationProperties) {
+      this.myApplicationProperties = myApplicationProperties;
     }
 
-    private final MyAppProperties myAppProperties;
+    private final MyApplicationProperties myApplicationProperties;
 
 }

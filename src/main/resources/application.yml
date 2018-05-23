@@ -32,7 +32,7 @@ management:
 spring:
   application:
       admin:
-        enabled: false
+        enabled: true
       name: @project.name@
   data:
     neo4j:
@@ -54,15 +54,20 @@ spring:
     exceptiontranslation:
       enabled: true
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/learn-neo4j?user=jdbc&password=jdbcpwd'
-    # username: jdbc
-    # password: jdbcpwd
+    url: 'jdbc:postgresql://localhost:5432/learn-neo4j?user=jdbc&password=jdbcpwd&schema=public'
+    jdbcUrl:  'jdbc:postgresql://localhost:5432/learn-neo4j?user=jdbc&password=jdbcpwd&schema=public'
+    username: jdbc
+    password: jdbcpwd
     driver-class-name: org.postgresql.Driver
-    generate-unique-name: true
+    #generate-unique-name: true
     continue-on-error: true
-    schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
+    #schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
+    #data: classpath:org/springframework/session/jdbc/data-postgresql.sql
+    #spring.datasource.data
+    #schema: public
     #name: Learnneo4jDS
     #type: com.zaxxer.hikari.HikariDataSource
+    #platform: postgresql
     platform: POSTGRESQL
     tomcat:
       max-active: 20
@@ -97,6 +102,7 @@ org:
   woehlke:
     learn:
       learnneo4j:
+          createTestDataAtStartup: true
           loginUsername: tw
           loginPassword: blablabla
           filesystemWorkdir: ports

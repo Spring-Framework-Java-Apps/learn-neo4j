@@ -6,27 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.woehlke.learn.learnneo4j.model.common.GraphNodeController;
 
 @Controller
-@RequestMapping("/node/platform")
-public class PlatformController {
-
-    private static final Log log = LogFactory.getLog(PlatformController.class);
-
-
-    @ModelAttribute("title")
-    public String getTitle(){
-        return "all Categories";
-    }
+@RequestMapping("/graph/platform")
+public class PlatformController implements GraphNodeController {
 
     @GetMapping("/all")
-    public String greeting(Model model) {
+    public String findAll(Model model) {
         model.addAttribute("all", platformService.findAll());
+        model.addAttribute("title", "Platform.findAll");
         log.info("graph/platform/all");
-        return "node/platform/all";
+        return "graph/platform/all";
     }
+
+
+    private static final Log log = LogFactory.getLog(PlatformController.class);
 
     private final PlatformService platformService;
 

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import org.woehlke.learn.learnneo4j.model.graph.Category;
 
 @Repository
-public interface CategoryRepository extends Neo4jRepository<Category,Long> {
+public interface CategoryRepository extends Neo4jRepository<Category,Long>, CategoryDelegate {
 
-    Category findByName(String name);
 }

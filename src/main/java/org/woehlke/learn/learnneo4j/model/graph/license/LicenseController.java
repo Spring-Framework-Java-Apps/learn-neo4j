@@ -6,12 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.woehlke.learn.learnneo4j.model.common.GraphNodeController;
 
 @Controller
-@RequestMapping("/node/license")
-public class LicenseController {
+@RequestMapping("/graph/license")
+public class LicenseController implements GraphNodeController {
+
+
+    @GetMapping("/all")
+    public String findAll(Model model) {
+        model.addAttribute("all", licenseService.findAll());
+        model.addAttribute("tizle", "License.findAll");
+        log.info("/graph/license/all");
+        return "graph/license/all";
+    }
+
 
     private static final Log log = LogFactory.getLog(LicenseController.class);
 
@@ -22,15 +32,4 @@ public class LicenseController {
         this.licenseService = licenseService;
     }
 
-    @ModelAttribute("title")
-    public String getTitle(){
-        return "all Licenses";
-    }
-
-    @GetMapping("/all")
-    public String greeting(Model model) {
-        model.addAttribute("all", licenseService.findAll());
-        log.info("/graph/license/all");
-        return "node/license/all";
-    }
 }

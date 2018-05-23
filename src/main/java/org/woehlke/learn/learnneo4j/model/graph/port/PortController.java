@@ -6,12 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.woehlke.learn.learnneo4j.model.common.GraphNodeController;
 
 @Controller
-@RequestMapping("/node/port")
-public class PortController {
+@RequestMapping("/graph/port")
+public class PortController implements GraphNodeController {
+
+
+    @GetMapping("/all")
+    public String findAll(Model model) {
+        model.addAttribute("all", portService.findAll());
+        model.addAttribute("title", "Port.findAll");
+        log.info("graph/port/all");
+        return "graph/port/all";
+    }
+
 
     private static final Log log = LogFactory.getLog(PortController.class);
 
@@ -20,17 +30,5 @@ public class PortController {
     @Autowired
     public PortController(PortService portService) {
         this.portService = portService;
-    }
-
-    @ModelAttribute("title")
-    public String getTitle(){
-        return "all Categories";
-    }
-
-    @GetMapping("/all")
-    public String all(Model model) {
-        model.addAttribute("all", portService.findAll());
-        log.info("graph/port/all");
-        return "node/port/all";
     }
 }

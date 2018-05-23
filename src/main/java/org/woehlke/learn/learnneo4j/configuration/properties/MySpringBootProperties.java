@@ -12,8 +12,8 @@ import java.util.List;
 
 @Component
 @Validated
-@ConfigurationProperties(prefix="spring")
-public class SpringAppProperties {
+@ConfigurationProperties(prefix = "spring")
+public class MySpringBootProperties {
 
     @NotNull
     private String profiles;
@@ -33,6 +33,226 @@ public class SpringAppProperties {
     @Valid
     private Thymeleaf thymeleaf = new Thymeleaf();
 
+    @Valid
+    private Data data = new Data();
+
+    @Validated
+    public static class Data {
+
+        @Valid
+        private Neo4j neo4j = new Neo4j();
+
+        @Valid
+        private Jpa jpa = new Jpa();
+
+        @Valid
+        private Web web = new Web();
+
+        @Validated
+        public static class Neo4j {
+
+            @NotNull
+            private Boolean openInView;
+
+            @NotNull
+            private String username;
+
+            @NotNull
+            private String password;
+
+            @Valid
+            private Repositories repositories = new Repositories();
+
+            @Validated
+            public static class Repositories {
+
+                @NotNull
+                private Boolean enabled;
+
+                public Boolean getEnabled() {
+                    return enabled;
+                }
+
+                public void setEnabled(Boolean enabled) {
+                    this.enabled = enabled;
+                }
+
+                @Override
+                public String toString() {
+                    return "Repositories{" +
+                        "enabled=" + enabled +
+                        '}';
+                }
+            }
+
+            public Boolean getOpenInView() {
+                return openInView;
+            }
+
+            public void setOpenInView(Boolean openInView) {
+                this.openInView = openInView;
+            }
+
+            public String getUsername() {
+                return username;
+            }
+
+            public void setUsername(String username) {
+                this.username = username;
+            }
+
+            public String getPassword() {
+                return password;
+            }
+
+            public void setPassword(String password) {
+                this.password = password;
+            }
+
+            public Repositories getRepositories() {
+                return repositories;
+            }
+
+            public void setRepositories(Repositories repositories) {
+                this.repositories = repositories;
+            }
+
+            @Override
+            public String toString() {
+                return "Neo4j{" +
+                    "openInView=" + openInView +
+                    ", username='" + username + '\'' +
+                    ", password='" + password + '\'' +
+                    ", repositories=" + repositories +
+                    '}';
+            }
+        }
+
+        @Validated
+        public static class Jpa {
+
+            @Valid
+            private Repositories repositories = new Repositories();
+
+            @Validated
+            public static class Repositories {
+
+                @NotNull
+                private Boolean enabled;
+
+                public Boolean getEnabled() {
+                    return enabled;
+                }
+
+                public void setEnabled(Boolean enabled) {
+                    this.enabled = enabled;
+                }
+
+                @Override
+                public String toString() {
+                    return "Repositories{" +
+                        "enabled=" + enabled +
+                        '}';
+                }
+            }
+
+            public Repositories getRepositories() {
+                return repositories;
+            }
+
+            public void setRepositories(Repositories repositories) {
+                this.repositories = repositories;
+            }
+
+            @Override
+            public String toString() {
+                return "Jpa{" +
+                    "repositories=" + repositories +
+                    '}';
+            }
+        }
+
+        @Validated
+        public static class Web {
+
+            @Valid
+            private Pageable pageable = new Pageable();
+
+            @Validated
+            public static class Pageable {
+
+                @NotNull
+                private Integer defaultPageSize;
+
+                @NotNull
+                private Integer maxPageSize;
+
+                @NotNull
+                private String pageParameter;
+
+                @NotNull
+                private String sizeParameter;
+
+                public Integer getDefaultPageSize() {
+                    return defaultPageSize;
+                }
+
+                public void setDefaultPageSize(Integer defaultPageSize) {
+                    this.defaultPageSize = defaultPageSize;
+                }
+
+                public Integer getMaxPageSize() {
+                    return maxPageSize;
+                }
+
+                public void setMaxPageSize(Integer maxPageSize) {
+                    this.maxPageSize = maxPageSize;
+                }
+
+                public String getPageParameter() {
+                    return pageParameter;
+                }
+
+                public void setPageParameter(String pageParameter) {
+                    this.pageParameter = pageParameter;
+                }
+
+                public String getSizeParameter() {
+                    return sizeParameter;
+                }
+
+                public void setSizeParameter(String sizeParameter) {
+                    this.sizeParameter = sizeParameter;
+                }
+
+                @Override
+                public String toString() {
+                    return "Pageable{" +
+                        "defaultPageSize=" + defaultPageSize +
+                        ", maxPageSize=" + maxPageSize +
+                        ", pageParameter='" + pageParameter + '\'' +
+                        ", sizeParameter='" + sizeParameter + '\'' +
+                        '}';
+                }
+            }
+
+            public Pageable getPageable() {
+                return pageable;
+            }
+
+            public void setPageable(Pageable pageable) {
+                this.pageable = pageable;
+            }
+
+            @Override
+            public String toString() {
+                return "Web{" +
+                    "pageable=" + pageable +
+                    '}';
+            }
+        }
+    }
+
     @Validated
     public static class Datasource {
 
@@ -48,16 +268,16 @@ public class SpringAppProperties {
         @NotNull
         private Boolean continueOnError;
 
-        @NotNull
+        //@NotNull
         private String schema;
 
-        @NotNull
+        //@NotNull
         private Boolean generateUniqueName;
 
-        @NotNull
+        //@NotNull
         private String name;
 
-        @NotNull
+        //@NotNull
         private String type;
 
         public String getDriverClassName() {
@@ -439,6 +659,14 @@ public class SpringAppProperties {
     }
 
 
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
+    }
+
     @Override
     public String toString() {
         return "SpringAppProperties{" +
@@ -448,27 +676,28 @@ public class SpringAppProperties {
             ", session=" + session +
             ", template=" + template +
             ", thymeleaf=" + thymeleaf +
+            ", data=" + data +
             '}';
     }
 
     public String toString2() {
         List<String> outputLines = new ArrayList<>();
-        outputLines.add("spring.profiles =                                     "+this.getProfiles());
-        outputLines.add("spring.template.cache =                               "+this.getTemplate().getCache());
-        outputLines.add("spring.thymeleaf.cache =                              "+this.getThymeleaf().getCache());
-        outputLines.add("spring.jpa.open-in-view =                             "+this.getJpa().getOpenInView());
-        outputLines.add("spring.jpa.hibernate.ddl-auto =                       "+this.getJpa().getHibernate().getDdlAuto());
-        outputLines.add("spring.jpa.properties.hibernate.dialect =             "+this.getJpa().getProperties().getHibernate().getDialect());
-        outputLines.add("spring.jpa.show-sql =                                 "+this.getJpa().getShowSql());
-        outputLines.add("spring.session.store-type =                           "+this.getSession().getStoreType());
-        outputLines.add("spring.session.jdbc.initializer.enabled =             "+this.getSession().getJdbc().getInitializer().getEnabled());
-        outputLines.add("spring.datasource.driverClassName =                   "+this.getDatasource().getDriverClassName());
-        outputLines.add("spring.datasource.platform =                          "+this.getDatasource().getPlatform());
-        outputLines.add("spring.datasource.continue-on-error =                 "+this.getDatasource().getContinueOnError());
-        outputLines.add("spring.datasource.schema =                            "+this.getDatasource().getSchema());
-        outputLines.add("spring.datasource.url =                               "+this.getDatasource().getUrl());
+        outputLines.add("spring.profiles =                                     " + this.getProfiles());
+        outputLines.add("spring.template.cache =                               " + this.getTemplate().getCache());
+        outputLines.add("spring.thymeleaf.cache =                              " + this.getThymeleaf().getCache());
+        outputLines.add("spring.jpa.open-in-view =                             " + this.getJpa().getOpenInView());
+        outputLines.add("spring.jpa.hibernate.ddl-auto =                       " + this.getJpa().getHibernate().getDdlAuto());
+        outputLines.add("spring.jpa.properties.hibernate.dialect =             " + this.getJpa().getProperties().getHibernate().getDialect());
+        outputLines.add("spring.jpa.show-sql =                                 " + this.getJpa().getShowSql());
+        outputLines.add("spring.session.store-type =                           " + this.getSession().getStoreType());
+        outputLines.add("spring.session.jdbc.initializer.enabled =             " + this.getSession().getJdbc().getInitializer().getEnabled());
+        outputLines.add("spring.datasource.driverClassName =                   " + this.getDatasource().getDriverClassName());
+        outputLines.add("spring.datasource.platform =                          " + this.getDatasource().getPlatform());
+        outputLines.add("spring.datasource.continue-on-error =                 " + this.getDatasource().getContinueOnError());
+        outputLines.add("spring.datasource.schema =                            " + this.getDatasource().getSchema());
+        outputLines.add("spring.datasource.url =                               " + this.getDatasource().getUrl());
         StringBuffer sb = new StringBuffer();
-        for(String outputLine:outputLines){
+        for (String outputLine : outputLines) {
             sb.append(" ");
             sb.append(outputLine);
             sb.append("\n");

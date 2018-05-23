@@ -6,12 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.woehlke.learn.learnneo4j.model.common.GraphNodeController;
 
 @Controller
-@RequestMapping("/node/maintainer")
-public class MaintainerController {
+@RequestMapping("/graph/maintainer")
+public class MaintainerController implements GraphNodeController {
+
+
+    @GetMapping("/all")
+    public String findAll(Model model) {
+        model.addAttribute("all", maintainerService.findAll());
+        model.addAttribute("title", "Maintainer.findAll");
+        log.info("graph/maintainer/all");
+        return "graph/maintainer/all";
+    }
+
 
     private static final Log log = LogFactory.getLog(MaintainerController.class);
 
@@ -20,18 +30,6 @@ public class MaintainerController {
         this.maintainerService = maintainerService;
     }
 
-
-    @ModelAttribute("title")
-    public String getTitle(){
-        return "all Categories";
-    }
-
-    @GetMapping("/all")
-    public String greeting(Model model) {
-        model.addAttribute("all", maintainerService.findAll());
-        log.info("graph/maintainer/all");
-        return "node/maintainer/all";
-    }
 
     private final MaintainerService maintainerService;
 }
