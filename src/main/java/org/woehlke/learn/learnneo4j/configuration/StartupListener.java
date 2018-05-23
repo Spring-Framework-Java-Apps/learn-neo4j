@@ -55,7 +55,10 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         log.info(this.categoryRepository.findByName("www").toString());
         log.info("--------------------------------");
         log.info(myAppProperties.toString());
-        log.info(myAppProperties.toString());
-        log.info(myAppProperties.toString());
+        log.info("--------------------------------");
+        log.info(otherAppProperties.toString());
+        log.info("--------------------------------");
+        log.info(springAppProperties.toString());
+        log.info("--------------------------------");
     }
 }
