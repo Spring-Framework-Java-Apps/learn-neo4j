@@ -14,7 +14,7 @@ public abstract class PagingAndSortingServiceImpl<T, ID extends Serializable> ex
     }
 
     protected PagingAndSortingRepository<T, ID> getRepository(){
-        return (PagingAndSortingRepository) super.getRepository();
+        return (PagingAndSortingRepository<T, ID>) super.getRepository();
     }
 
     @Override

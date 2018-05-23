@@ -11,6 +11,6 @@ public abstract class Neo4jServiceImpl<T, ID extends Serializable> extends Pagin
     }
 
     protected Neo4jRepository<T, ID> getRepository(){
-        return (Neo4jRepository) super.getRepository();
+        return (Neo4jRepository<T, ID>) super.getRepository();
     }
 }

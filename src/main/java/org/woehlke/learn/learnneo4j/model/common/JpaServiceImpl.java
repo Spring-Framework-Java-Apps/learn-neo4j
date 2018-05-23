@@ -12,6 +12,6 @@ public abstract class JpaServiceImpl<T, ID extends Serializable> extends PagingA
     }
 
     protected JpaRepository<T, ID> getRepository(){
-        return (JpaRepository) super.getRepository();
+        return (JpaRepository<T, ID>) super.getRepository();
     }
 }

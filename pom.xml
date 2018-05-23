@@ -208,6 +208,17 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
+    <dependency>
+      <groupId>javax.transaction</groupId>
+      <artifactId>javax.transaction-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.interceptor</groupId>
+      <artifactId>javax.interceptor-api</artifactId>
+      <version>1.2</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -216,10 +227,12 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+      <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
       </plugin>
+      -->
       <plugin>
         <groupId>pl.project13.maven</groupId>
         <artifactId>git-commit-id-plugin</artifactId>
@@ -242,11 +255,6 @@
             </configuration>
           </execution>
         </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
 
       <plugin>
@@ -292,10 +300,11 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <linksource>true</linksource>
-          <maxmemory>2048m</maxmemory>
-          <source>1.8</source>
+          <maxmemory>4096m</maxmemory>
+          <source>${java.version}</source>
           <encoding>${project.build.sourceEncoding}</encoding>
           <javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>
+          <additionalparam>-Xdoclint:none</additionalparam>
         </configuration>
         <executions>
           <execution>
@@ -305,13 +314,12 @@
               <goal>javadoc</goal>
             </goals>
             <configuration>
-              <!--
               <linksource>true</linksource>
-              -->
-              <maxmemory>2048m</maxmemory>
-              <source>1.8</source>
+              <maxmemory>4096m</maxmemory>
+              <source>${java.version}</source>
               <encoding>${project.build.sourceEncoding}</encoding>
               <javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>
+              <additionalparam>-Xdoclint:none</additionalparam>
             </configuration>
           </execution>
         </executions>
@@ -457,6 +465,7 @@
         <artifactId>cobertura-maven-plugin</artifactId>
         <version>2.7</version>
       </plugin>
+
     </plugins>
   </build>
 
@@ -605,11 +614,6 @@
             </reports>
           </reportSet>
         </reportSets>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>cobertura-maven-plugin</artifactId>
-        <version>2.7</version>
       </plugin>
     </plugins>
   </reporting>

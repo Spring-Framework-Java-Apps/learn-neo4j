@@ -11,7 +11,7 @@ public abstract class CrudServiceImpl<T, ID extends Serializable> extends Common
     }
 
     protected CrudRepository<T, ID> getRepository(){
-        return (CrudRepository) super.getRepository();
+        return (CrudRepository<T, ID>) super.getRepository();
     }
 
     @Override
