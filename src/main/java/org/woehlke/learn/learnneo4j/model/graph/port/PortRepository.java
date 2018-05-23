@@ -6,5 +6,5 @@ import org.woehlke.learn.learnneo4j.model.graph.Port;
 
 
 @Repository
-public interface PortRepository extends Neo4jRepository<Port,Long> {
+public interface PortRepository extends Neo4jRepository<Port,Long>,PortDelegate {
 }

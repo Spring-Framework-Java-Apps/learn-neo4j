@@ -43,4 +43,8 @@ public class PortServiceImpl extends Neo4jServiceImpl<Port,Long> implements Port
 
     private static final Log log = LogFactory.getLog(PortServiceImpl.class);
 
+    @Override
+    public Port findByName(String name) {
+        return this.getRepository().findByName(name);
+    }
 }

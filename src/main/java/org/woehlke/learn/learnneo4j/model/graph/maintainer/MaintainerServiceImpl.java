@@ -23,4 +23,18 @@ public class MaintainerServiceImpl extends Neo4jServiceImpl<Maintainer,Long> imp
 
     private static final Log log = LogFactory.getLog(MaintainerServiceImpl.class);
 
+    @Override
+    public Maintainer findByName(String name) {
+        return this.getRepository().findByName(name);
+    }
+
+    @Override
+    public Maintainer findByGitHub(String github) {
+        return this.getRepository().findByGitHub(github);
+    }
+
+    @Override
+    public Maintainer findByNameAndGitHub(String name, String github) {
+        return this.getRepository().findByNameAndGitHub(name,github);
+    }
 }

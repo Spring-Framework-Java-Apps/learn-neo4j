@@ -5,7 +5,5 @@ import org.springframework.stereotype.Repository;
 import org.woehlke.learn.learnneo4j.model.graph.Variant;
 
 @Repository
-public interface VariantRepository extends Neo4jRepository<Variant,Long> {
-
-    Variant findByName(String name);
+public interface VariantRepository extends Neo4jRepository<Variant,Long>,VariantDelegate {
 }

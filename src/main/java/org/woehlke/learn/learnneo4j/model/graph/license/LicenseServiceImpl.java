@@ -23,4 +23,8 @@ public class LicenseServiceImpl extends Neo4jServiceImpl<License,Long> implement
 
     private static final Log log = LogFactory.getLog(LicenseServiceImpl.class);
 
+    @Override
+    public License findByName(String name) {
+        return getRepository().findByName(name);
+    }
 }

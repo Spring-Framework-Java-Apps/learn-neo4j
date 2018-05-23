@@ -23,4 +23,9 @@ public class PlatformServiceImpl extends Neo4jServiceImpl<Platform,Long> impleme
     }
 
     private static final Log log = LogFactory.getLog(PlatformServiceImpl.class);
+
+    @Override
+    public Platform findByName(String name) {
+        return getRepository().findByName(name);
+    }
 }

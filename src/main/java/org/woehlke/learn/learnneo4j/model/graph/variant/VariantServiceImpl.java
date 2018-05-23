@@ -22,4 +22,9 @@ public class VariantServiceImpl extends Neo4jServiceImpl<Variant,Long> implement
     }
 
     private static final Log log = LogFactory.getLog(VariantServiceImpl.class);
+
+    @Override
+    public Variant findByName(String name) {
+        return this.getRepository().findByName(name);
+    }
 }
