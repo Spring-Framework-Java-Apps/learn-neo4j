@@ -25,9 +25,6 @@ public class MySpringBootProperties {
     private Jpa jpa = new Jpa();
 
     @Valid
-    private Session session = new Session();
-
-    @Valid
     private Template template = new Template();
 
     @Valid
@@ -529,84 +526,6 @@ public class MySpringBootProperties {
     }
 
     @Validated
-    public static class Session {
-
-        @NotNull
-        private String storeType;
-
-        @Valid
-        private Jdbc jdbc = new Jdbc();
-
-        @Validated
-        public static class Jdbc {
-
-            @Valid
-            private Initializer initializer = new Initializer();
-
-            @Validated
-            public static class Initializer {
-
-                @NotNull
-                private Boolean enabled;
-
-                public Boolean getEnabled() {
-                    return enabled;
-                }
-
-                public void setEnabled(Boolean enabled) {
-                    this.enabled = enabled;
-                }
-
-                @Override
-                public String toString() {
-                    return "Initializer{" +
-                        "enabled=" + enabled +
-                        '}';
-                }
-            }
-
-            public Initializer getInitializer() {
-                return initializer;
-            }
-
-            public void setInitializer(Initializer initializer) {
-                this.initializer = initializer;
-            }
-
-            @Override
-            public String toString() {
-                return "Jdbc{" +
-                    "initializer=" + initializer +
-                    '}';
-            }
-        }
-
-        public String getStoreType() {
-            return storeType;
-        }
-
-        public void setStoreType(String storeType) {
-            this.storeType = storeType;
-        }
-
-        public Jdbc getJdbc() {
-            return jdbc;
-        }
-
-        public void setJdbc(Jdbc jdbc) {
-            this.jdbc = jdbc;
-        }
-
-        @Override
-        public String toString() {
-            return "Session{" +
-                "storeType='" + storeType + '\'' +
-                ", jdbc=" + jdbc +
-                '}';
-        }
-    }
-
-    @Validated
     public static class Template {
 
         @NotNull
@@ -666,14 +585,6 @@ public class MySpringBootProperties {
         this.jpa = jpa;
     }
 
-    public Session getSession() {
-        return session;
-    }
-
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
     public Template getTemplate() {
         return template;
     }
@@ -712,7 +623,6 @@ public class MySpringBootProperties {
             "profiles='" + profiles + '\'' +
             ", datasource=" + datasource +
             ", jpa=" + jpa +
-            ", session=" + session +
             ", template=" + template +
             ", thymeleaf=" + thymeleaf +
             ", data=" + data +
@@ -728,8 +638,6 @@ public class MySpringBootProperties {
         outputLines.add("spring.jpa.hibernate.ddl-auto =                       " + this.getJpa().getHibernate().getDdlAuto());
         outputLines.add("spring.jpa.properties.hibernate.dialect =             " + this.getJpa().getProperties().getHibernate().getDialect());
         outputLines.add("spring.jpa.show-sql =                                 " + this.getJpa().getShowSql());
-        outputLines.add("spring.session.store-type =                           " + this.getSession().getStoreType());
-        outputLines.add("spring.session.jdbc.initializer.enabled =             " + this.getSession().getJdbc().getInitializer().getEnabled());
         outputLines.add("spring.datasource.driverClassName =                   " + this.getDatasource().getDriverClassName());
         outputLines.add("spring.datasource.platform =                          " + this.getDatasource().getPlatform());
         outputLines.add("spring.datasource.continue-on-error =                 " + this.getDatasource().getContinueOnError());

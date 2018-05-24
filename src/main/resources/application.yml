@@ -63,6 +63,7 @@ spring:
     platform: POSTGRESQL
     tomcat:
       max-active: 20
+
   jpa:
       database-platform: org.hibernate.dialect.PostgreSQL95Dialect
       hibernate:
@@ -76,12 +77,6 @@ spring:
       open-in-view: true
       generate-ddl: true
       show-sql: true
-  session:
-    store-type: jdbc
-    jdbc:
-      schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
-      initializer:
-        enabled: true
   devtools:
     livereload:
       enabled: true

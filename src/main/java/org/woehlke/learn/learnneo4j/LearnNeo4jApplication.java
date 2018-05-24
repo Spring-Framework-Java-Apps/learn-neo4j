@@ -4,7 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
-import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 import org.woehlke.learn.learnneo4j.configuration.MyApplicationProperties;
 import org.woehlke.learn.learnneo4j.configuration.properties.*;
 
@@ -18,7 +17,6 @@ import org.woehlke.learn.learnneo4j.configuration.properties.*;
     MySpringBootProperties.class
 })
 
-@EnableJdbcHttpSession
 @EnableSpringDataWebSupport
 public class LearnNeo4jApplication {
 
