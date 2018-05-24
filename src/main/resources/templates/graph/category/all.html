@@ -4,10 +4,15 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:include="layoutMain :: tw-head">
 </head>
-<body th:include="layoutMain :: tw-body">
+<body>
+<h1>All Categories:</h1>
+<hr/>
+<ul th:each="item : ${all}">
+  <li th:text="${item.name}" />
+</ul>
+<!--
     <main role="main" th:include="layoutMain :: tw-main">
         <div class="container" th:replace="template :: tw_main_app">
-            <!-- Example row of columns -->
             <div class="row">
                 <div class="col-md-12">
                     <h2>All Categories:</h2>
@@ -19,5 +24,6 @@
             </div>
         </div>
     </main>
+    -->
 </body>
 </html>
