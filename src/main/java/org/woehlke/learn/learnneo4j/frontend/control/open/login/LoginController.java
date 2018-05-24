@@ -1,4 +1,4 @@
-package org.woehlke.learn.learnneo4j.frontend.control.open.home;
+package org.woehlke.learn.learnneo4j.frontend.control.open.login;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -7,30 +7,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.woehlke.learn.learnneo4j.configuration.PageContentPopulator;
+import org.woehlke.learn.learnneo4j.frontend.control.open.home.WelcomeController;
 import org.woehlke.learn.learnneo4j.frontend.model.PageContent;
 
 @Controller
-public class WelcomeController {
+public class LoginController {
 
-    @GetMapping("/welcome")
-    public String home(Model model) {
-        PageContent pageContent = pageContentPopulator.pageContentSetSTandardValues("open/welcome");
+    @GetMapping("/login")
+    public String loginForm(Model model) {
+        PageContent pageContent = pageContentPopulator.pageContentSetSTandardValues("open/login");
         log.debug(pageContent.toString());
         model.addAttribute("pageContent", pageContent);
-        return "open/welcome";
+        return "open/login";
     }
-
-    private final WelcomeService welcomeService;
 
     private final PageContentPopulator pageContentPopulator;
 
     @Autowired
-    public WelcomeController(WelcomeService welcomeService, PageContentPopulator pageContentPopulator) {
-        this.welcomeService = welcomeService;
+    public LoginController(PageContentPopulator pageContentPopulator) {
         this.pageContentPopulator = pageContentPopulator;
     }
 
-
     private static final Log log = LogFactory.getLog(WelcomeController.class);
-
 }

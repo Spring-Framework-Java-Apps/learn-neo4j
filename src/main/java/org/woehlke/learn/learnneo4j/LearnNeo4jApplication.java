@@ -16,8 +16,6 @@ import org.woehlke.learn.learnneo4j.configuration.properties.*;
     MyServerProperties.class,
     MySpringBootProperties.class
 })
-
-@EnableSpringDataWebSupport
 public class LearnNeo4jApplication {
 
 	public static void main(String[] args) {

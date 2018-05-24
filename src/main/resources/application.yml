@@ -105,9 +105,13 @@ org:
           pageSubTitle: Graph DB. Power of cool Persistence with Neo4J and Spring-Boot.
           webSecurityConfigPublicPaths:
             - "/welcome"
+            - "/welcome/*"
             - "/welcome/**"
+            - "/open/*"
             - "/open/**"
+            - "/graph/*"
             - "/graph/**"
+            - "/db/*"
             - "/db/**"
             - "/img/*"
             - "/img/**"
